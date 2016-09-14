@@ -22,21 +22,15 @@ public class HomeController {
 
 	private static final Logger _log = LoggerFactory.getLogger(HomeController.class);
 
-	
 	@RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
 	public String landingPage(Model model) {
 		_log.info("on landing Page");
 		return "index";
 	}
-	
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public String home(Model model) {
-		return "home";
-	}
 
-	@RequestMapping(value = "accessDenied", method = RequestMethod.GET)
-	public String accessDeniedPage() {
-		return "error/404";
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public String home(Model model) throws Exception {
+		return "home";
 	}
 
 	@RequestMapping(value = "login")
@@ -52,7 +46,16 @@ public class HomeController {
 		}
 		return "redirect:/login?logout";
 	}
-	
+
+	@RequestMapping(value = "/404")
+	public String pageNotFound() {
+		return "error/404";
+	}
+
+	@RequestMapping(value = "/500")
+	public String error() {
+		return "error/500";
+	}
 
 	/**
 	 * Getting the user name of the logged in user
@@ -69,5 +72,4 @@ public class HomeController {
 
 		return userName;
 	}
-
 }

@@ -49,6 +49,10 @@
 		<beans:property name="templateEngine" ref="templateEngine" />
 		<beans:property name="order" value="0" />
 	</beans:bean>
+	
+	<beans:bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<beans:property name="basename" value="/META-INF/messages/messages" />
+	</beans:bean>
 
 	<context:component-scan base-package="demo.practice.springmvcapp" />
 
